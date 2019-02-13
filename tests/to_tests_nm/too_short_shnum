@@ -1,0 +1,49 @@
+#!/bin/bash
+
+###################################
+#              Test               #
+###################################
+
+echo -e "\nTesting with an too short shnum: "
+$my_binary  $test_needed_file/test_tooshort_shnum 1>$student_stdout_file 2>$student_stderr_file
+student_return=$?
+$sys_binary $test_needed_file/test_tooshort_shnum 1>$system_stdout_file 2>$system_stderr_file
+system_return=$?
+
+if [ $convert_return_value -eq 1 ] && [ "$student_return" = "$epitech_error_return_value" ];
+then
+    student_return="$wanted_error_return_value"
+fi
+
+student_stdout=$(cat $student_stdout_file | sed "s|$my_binary|$sys_binary|g")
+system_stdout=$(cat $system_stdout_file)
+student_stderr=$(cat $student_stderr_file | sed "s|$my_binary|$sys_binary|g")
+system_stderr=$(cat $system_stderr_file)
+script_ret=0
+
+echo -n "Stdout: "
+if [ "$student_stdout" = "$system_stdout" ];
+then
+    echo -e "\e[32mOK\e[0m"
+else
+    echo -e "\e[31mKO\e[0m: GOT: '$student_stdout' but need to be '$system_stdout'"
+    script_ret=1
+fi
+echo -n "Stderr: "
+if [ "$student_stderr" = "$system_stderr" ];
+then
+    echo -e "\e[32mOK\e[0m"
+else
+    echo -e "\e[31mKO\e[0m: GOT: '$student_stderr' but need to be '$system_stderr'"
+    script_ret=1
+fi
+echo -n "Return value: "
+if [ "$student_return" = "$system_return" ];
+then
+    echo -e "\e[32mOK\e[0m"
+else
+    echo -e "\e[31mKO\e[0m: GOT: '$student_return' but need to be '$system_return'"
+    script_ret=1
+fi
+
+exit $script_ret
