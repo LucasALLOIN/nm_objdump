@@ -10,5 +10,5 @@ set(EXECUTABLE_NAME_OBJDUMP my_objdump)
 project(${PROJECT_NAME})
 include_directories(include)
 
-add_executable(${EXECUTABLE_NAME_NM}    ${SOURCE_DIR_NM}/main.c commun/elf/elf32.c commun/elf/elf64.c include/my_elf.h include/file_utils.h commun/file/utils.c include/errors.h commun/my_malloc.c include/my_malloc.h commun/errors/throw.c commun/archive/ar.c commun/elf/commun.c)
-add_executable(${EXECUTABLE_NAME_OBJDUMP}   ${SOURCE_DIR_OBJDUMP}/main.c commun/elf/elf32.c commun/elf/elf64.c include/file_utils.h commun/file/utils.c commun/my_malloc.c commun/errors/throw.c commun/archive/ar.c)
+add_executable(${EXECUTABLE_NAME_NM}    ${SOURCE_DIR_NM}/main.c commun/elf/elf32.c commun/elf/elf64.c include/my_elf.h include/file_utils.h commun/file/utils.c include/errors.h commun/my_malloc.c include/my_malloc.h commun/errors/throw.c commun/archive/ar.c commun/elf/commun.c nm/source/errors.c nm/source/get_symbol.c nm/source/nm.c nm/source/decode_symbol_one.c nm/source/decode_symbol_two.c nm/source/compare.c)
+add_executable(${EXECUTABLE_NAME_OBJDUMP}   ${SOURCE_DIR_OBJDUMP}/main.c commun/elf/elf32.c commun/elf/elf64.c include/file_utils.h commun/file/utils.c commun/my_malloc.c commun/errors/throw.c commun/archive/ar.c objdump/source/flag_objdump.c objdump/source/print_section.c objdump/source/objdump.c)

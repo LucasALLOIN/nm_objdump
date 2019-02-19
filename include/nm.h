@@ -57,34 +57,35 @@ typedef struct sec_name_to_letter_s {
     unsigned char letter;
 } sec_name_to_letter_t;
 
-const int sec_number = 23;
-
-const sec_name_to_letter_t section_to_letter[] = {
-    {"*DEBUG*",   'N'},
-    {".debug",    'N'},
-    {".line",     'N'},
-    {".bss",      'b'},
-    {"zerovars",  'b'},
-    {".zerovars", 'b'},
-    {".data",     'd'},
-    {"vars",      'd'},
-    {".vars",     'd'},
-    {".got",      'd'},
-    {".plt",      'd'},
-    {".dynamic",  'd'},
-    {".rdata",    'r'},
-    {".rodata",   'r'},
-    {".eh_frame", 'r'},
-    {".sbss",     's'},
-    {".scommun",  'c'},
-    {".sdata",    'g'},
-    {".text",     't'},
-    {"code",      't'},
-    {".init",     't'},
-    {".fini",     't'},
-    {".preinit",  't'}
-};
-
-void destroy_file_mapped(file_mapped_t *file);
+int is_valid_offset_64(file_mapped_t *file, Elf64_Off off);
+int is_valid_offset_32(file_mapped_t *file, Elf32_Off off);
+Elf64_Shdr *get_symbole_hdr_64(file_mapped_t *file, Elf64_Shdr *shdr);
+Elf32_Shdr *get_symbole_hdr_32(file_mapped_t *file, Elf32_Shdr *shdr);
+int is_valid_symbole_hdr_64(file_mapped_t *file, Elf64_Shdr *shdr);
+int is_valid_symbole_hdr_32(file_mapped_t *file, Elf32_Shdr *shdr);
+char *get_sym_strtab_64(file_mapped_t *f, Elf64_Shdr *sh, Elf64_Shdr *sym_hdr);
+char *get_sym_strtab_32(file_mapped_t *f, Elf32_Shdr *sh, Elf32_Shdr *sym_hdr);
+nm_sec_64_t *get_nm_sec_64(file_mapped_t *file, Elf64_Ehdr *ehdr);
+nm_sec_32_t *get_nm_sec_32(file_mapped_t *file, Elf32_Ehdr *ehdr);
+symbol_64_t *get_symbols_64(nm_sec_64_t *nm_sec);
+symbol_32_t *get_symbols_32(nm_sec_32_t *nm_sec);
+unsigned char decode_symbol_type_64(symbol_64_t *sym, nm_sec_64_t *nm_sec);
+unsigned char decode_symbol_type_32(symbol_32_t *sym, nm_sec_32_t *nm_sec);
+unsigned char get_sec_symbol_type_64(symbol_64_t *sym, nm_sec_64_t *nm_sec);
+unsigned char get_sec_symbol_type_32(symbol_32_t *sym, nm_sec_32_t *nm_sec);
+unsigned char get_weak_symbol_type_64(symbol_64_t *symbol);
+unsigned char get_weak_symbol_type_32(symbol_32_t *symbol);
+unsigned char get_shndx_symbol_type_64(symbol_64_t *symbol, nm_sec_64_t *nm);
+unsigned char get_shndx_symbol_type_32(symbol_32_t *symbol, nm_sec_32_t *nm);
+unsigned char get_symbol_type_64(symbol_64_t *symbol, nm_sec_64_t *nm_sec);
+unsigned char get_symbol_type_32(symbol_32_t *symbol, nm_sec_32_t *nm_sec);
+int nm_compare_64(const void *sym_1, const void *sym_2);
+int nm_compare_32(const void *sym_1, const void *sym_2);
+int nm_algo_64(file_mapped_t *file, Elf64_Ehdr *hdr);
+int nm_algo_32(file_mapped_t *file, Elf32_Ehdr *hdr);
+int launch_nm(file_mapped_t *file, int argc);
+int handle_archive_nm(file_mapped_t *file, int argc);
+int do_nm(char *file_name, int argc);
+int main(int argc, char *argv[]);
 
 #endif

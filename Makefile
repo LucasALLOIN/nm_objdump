@@ -7,17 +7,20 @@
 
 COMMUN_DIR	=	commun
 
-COMMUN_SRC = 	$(COMMUN_DIR)/elf/elf32.c \
-				$(COMMUN_DIR)/elf/elf64.c \
-				$(COMMUN_DIR)/elf/commun.c \
-				$(COMMUN_DIR)/errors/throw.c \
-				$(COMMUN_DIR)/file/utils.c \
-				$(COMMUN_DIR)/my_malloc.c \
+COMMUN_SRC = 	$(COMMUN_DIR)/elf/elf32.c 		\
+				$(COMMUN_DIR)/elf/elf64.c 		\
+				$(COMMUN_DIR)/elf/commun.c 		\
+				$(COMMUN_DIR)/errors/throw.c 	\
+				$(COMMUN_DIR)/file/utils.c 		\
+				$(COMMUN_DIR)/my_malloc.c 		\
 				$(COMMUN_DIR)/archive/ar.c
 
 OBJDUMP_DIR	=	objdump
 
-OBJDUMP_SRC	:=	$(OBJDUMP_DIR)/source/main.c
+OBJDUMP_SRC	:=	$(OBJDUMP_DIR)/source/main.c 			\
+				$(OBJDUMP_DIR)/source/objdump.c 		\
+				$(OBJDUMP_DIR)/source/print_section.c 	\
+				$(OBJDUMP_DIR)/source/flag_objdump.c 	\
 
 OBJDUMP_SRC +=	$(COMMUN_SRC)
 
@@ -25,7 +28,13 @@ OBJDUMP_OBJ	=	$(OBJDUMP_SRC:.c=.o)
 
 NM_DIR	=	nm
 
-NM_SRC	:=	$(NM_DIR)/source/main.c
+NM_SRC	:=	$(NM_DIR)/source/main.c 				\
+			$(NM_DIR)/source/nm.c					\
+			$(NM_DIR)/source/compare.c				\
+			$(NM_DIR)/source/decode_symbol_one.c	\
+			$(NM_DIR)/source/decode_symbol_two.c	\
+			$(NM_DIR)/source/errors.c				\
+			$(NM_DIR)/source/get_symbol.c			\
 
 NM_SRC +=	$(COMMUN_SRC)
 
