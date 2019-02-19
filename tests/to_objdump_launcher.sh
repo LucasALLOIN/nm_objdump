@@ -30,7 +30,7 @@ export student_stderr_file="student_stderr"
 export system_stderr_file="system_stderr"
 
 # Define the folder where the tests are located
-test_dir=("tests/to_tests_nm")
+test_dir=("tests/objdump_test")
 
 # Define the folder where the files needed for tests are located
 export test_needed_file="tests/binary"

@@ -31,7 +31,7 @@ NM_SRC +=	$(COMMUN_SRC)
 
 NM_OBJ	=	$(NM_SRC:.c=.o)
 
-CFLAGS	=	-Werror -Wextra -W -Wall -Wparentheses -Wsign-compare -Wpointer-sign -Wuninitialized -Wunused-but-set-variable -I ./include -g
+CFLAGS	=	-Werror -Wextra -W -Wall -Wparentheses -Wpointer-sign -Wuninitialized -Wunused-but-set-variable -lm -I ./include -g
 
 NM	=	my_nm
 

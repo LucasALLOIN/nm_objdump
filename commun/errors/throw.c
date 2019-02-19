@@ -35,6 +35,6 @@ void throw_malformated_archive(file_mapped_t *file)
 
 void throw_no_symbols(file_mapped_t *file, char *no)
 {
-	fprintf(stderr, "%s: %s: %s symbols\n", "objdump", \
+	fprintf(stderr, "%s: %s: %s symbols\n", program_invocation_name, \
 	file->file_name, no);
 }

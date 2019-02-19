@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # The path mounted to docker to execute test: Must be root of your project
-test_dir="/home/lucas/Documents/PSU_nmobjdump_2018"
+test_dir="/home/lucas/Documents/PSU_2018_nmobjdump"
 
 # The test Bash script relative path to your project root
 #Ex:

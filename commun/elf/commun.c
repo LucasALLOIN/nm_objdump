@@ -13,12 +13,15 @@ int is_elf_file(file_mapped_t *file)
 {
 	char *pt = file->load_addr;
 
-	if (file->size < 4) {
+	if (file->size < 2) {
 		throw_file_truncated(file);
 		return (0);
 	}
 	(void) file;
-	if (file->size < sizeof(Elf32_Ehdr)) {
+	if ((pt[0] == 'M' && pt[1] == 'Z') || (pt[0] == 'Z' && pt[1] == 'M')) {
+			return (1);
+	}
+	if (file->size < 4 || file->size < sizeof(Elf32_Ehdr)) {
 		throw_file_not_recognized(file);
 		return (0);
 	}

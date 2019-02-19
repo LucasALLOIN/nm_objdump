@@ -85,8 +85,6 @@ const sec_name_to_letter_t section_to_letter[] = {
 	{".preinit", 't'}
 };
 
-
-
 void destroy_file_mapped(file_mapped_t *file);
 
 #endif
