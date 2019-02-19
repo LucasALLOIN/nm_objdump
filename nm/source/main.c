@@ -415,7 +415,6 @@ int launch_nm(file_mapped_t *file, int argc)
 {
 	int ret = is_32_bit(file, file->load_addr);
 
-	printf("ptdr\n");
 	if (ret == 1) {
 		if (verify_hdr_32(file, file->load_addr))
 			return (1);

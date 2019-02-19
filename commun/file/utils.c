@@ -18,7 +18,7 @@ file_mapped_t *load_file_in_memory(char *file_name)
 	if (file_fd == -1 || fstat(file_fd, &buf) == -1 || buf.st_size == 0)
 		return (NULL);
 	else if (!S_ISREG(buf.st_mode)) {
-		fprintf(stderr, "%s: Warning: '%s' is not an ordinary file\n",
+		fprintf(stderr, "%s: Warning: '%s' is a directory\n",
 			program_invocation_name, file_name);
 		return (NULL);
 	}
