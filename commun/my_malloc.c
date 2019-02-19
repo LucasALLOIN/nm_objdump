@@ -11,10 +11,10 @@
 
 void *my_malloc(size_t size)
 {
-	void *ptr = malloc(size);
+    void *ptr = malloc(size);
 
-	if (ptr == NULL)
-		exit(MY_EXIT_FAILURE);
-	memset(ptr, 0, size);
-	return (ptr);
+    if (ptr == NULL)
+        exit(MY_EXIT_FAILURE);
+    memset(ptr, 0, size);
+    return (ptr);
 }

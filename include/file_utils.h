@@ -16,10 +16,10 @@
 #include "my_malloc.h"
 
 typedef struct file_mapped_s {
-	void *load_addr;
-	char *file_name;
-	unsigned int size;
-	int is_ar;
+    void *load_addr;
+    char *file_name;
+    unsigned int size;
+    int is_ar;
 } file_mapped_t;
 
 file_mapped_t *load_file_in_memory(char *file_name);
