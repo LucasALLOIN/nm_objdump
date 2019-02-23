@@ -18,11 +18,6 @@ int is_elf_file(file_mapped_t *file)
         return (0);
     }
     (void) file;
-    if (file->size < sizeof(Elf32_Ehdr)) {
-        throw_file_not_recognized(file);
-        return (0);
-    }
-    (void) file;
     if (pt[0] != 0x7f || pt[1] != 'E' || pt[2] != 'L' || pt[3] != 'F') {
         throw_file_not_recognized(file);
         return (0);

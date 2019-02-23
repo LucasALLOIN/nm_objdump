@@ -1,8 +1,8 @@
 /*
 ** EPITECH PROJECT, 2018
-** Project nm
+** Project nmobjdump
 ** File description:
-** flags.h
+** file.
 */
 
 #ifndef __BFD_H_SEEN__
